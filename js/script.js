@@ -1,6 +1,3 @@
-/**
- * @author Vinit Shahdeo <vinitshahdeo@gmail.com>
- */
 (function ($) {
     "use strict";
       $('.sakura-falling').sakura();
@@ -28,9 +25,7 @@ const PLAY_STATE = {
     STARTED:3,
     PAUSED:4
   }
- var play_state = PLAY_STATE.NOT_PLAYING 
-
-
+ var play_state = PLAY_STATE.NOT_PLAYING
 //  $( document ).ready(function() {
 //     console.log( "ready!" );
 //     setTimeout(() => {
@@ -78,17 +73,21 @@ var x = setInterval(function() {
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
     // Output the result in an element with id="demo"
-    document.getElementById("timer").innerHTML = '<div>' + days + '<span>Days</span></div>' +
-    '<div>' + hours + '<span>Hours</span></div>' +
-    '<div>' + minutes + '<span>Minutes</span></div>' +
-    '<div>' + seconds + '<span>Seconds</span></div>';
+    document.getElementById("timer").innerHTML = '<div>' + addLeadingZeros(days, 2) + '<span>Days</span></div>' +
+    '<div>' + addLeadingZeros(hours, 2) + '<span>Hours</span></div>' +
+    '<div>' + addLeadingZeros(minutes, 2) + '<span>Mins</span></div>' +
+    '<div>' + addLeadingZeros(seconds, 2) + '<span>Secs   </span></div>';
     
     // If the count down is over, write some text 
     if (distance < 0) {
         clearInterval(x);
-        document.getElementById("timer").innerHTML = "Bless the married couple for happy life!";
+        document.getElementById("timer").innerHTML = "<h2>Bless the married couple for happy life!</h2>";
     }
 }, 1000);
+
+function addLeadingZeros(num, totalLength) {
+    return String(num).padStart(totalLength, '0');
+  }
 
 // being a bit cool :p  
 var styles = [
